@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="cf8c9cdc-f54a-4036-83b0-c89c61859f1d" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="dummyFlow" doc:id="eca98f35-23c9-4e21-ac9f-25fb0839ce99" >
+		<http:listener doc:name="Listener" doc:id="c4a0a3d2-1572-4668-a0d5-7b436950dd98" config-ref="HTTP_Listener_config" path="/dummy"/>
+		<set-payload value='#["Hiiii From Anypoint Studio"]' doc:name="Set Payload" doc:id="64815018-cc8f-48da-ad4e-6496f8eaa524" />
+	</flow>
+</mule>
