@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="dummy-test-suite.xml" />
+	<munit:test name="dummy-test-suite-dummyFlowTest" doc:id="d1633c8c-467a-479a-98eb-85a27efbb183" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to dummyFlow" doc:id="6c1f9b2e-fc2e-4925-8dde-45356761a078" name="dummyFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="Assert equals" doc:id="c9b297ee-e9a3-4f27-8270-c2e33e92057b" actual="#[payload]" message='#["Payload doesnt matched with expected output"]' expected='#["Hiiii From Anypoint Studio"]'/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="dummy-test-suite-dummyFlowTest1" doc:id="9267e966-0609-42c1-8f38-a16581d72283" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to dummyFlow" doc:id="e37da374-02cd-4610-871c-836b22d5c40b" name="dummyFlow"/>
+		</munit:execution>
+		<munit:validation>
+			<munit-tools:assert-that doc:name="Assert that" doc:id="dbdf1d24-744b-4f75-9644-4fd86bce32f3" message='#["payload should not be null "]' expression="#[payload]" is="#[MunitTools::notNullValue()]"/>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
